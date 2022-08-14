@@ -73,6 +73,12 @@ mkdir -p ~/code ~/test
 # requires export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket" in ~/.bashrc
 systemctl --user enable --now ssh-agent
 
+# configure git
+git config --global user.name "Hunter Loftis"
+git config --global user.email hunter@hunterloftis.com
+git config --global core.editor "nano"
+git config --global pull.ff only
+
 # TODO: include a .bashrc that autoloads ssh-agent/ssh keys
 #   https://github.com/White-Oak/arch-setup-for-dummies/blob/master/setting-up-ssh-agent.md
 # TODO: include ~/.flat/docker and ~/.flat/docker-compose flatpak wrappers that call the host's podman/podman-compose equivalents. 
