@@ -13,9 +13,9 @@ export PATH="~/.local/bin:$PATH"
 # dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-# aliases for vscode devcontainers
+# use podman instead of docker
 alias docker=podman
-alias docker-compose=podman-compose
+export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
 
 alias ls='ls --color=auto'
 if command -v grep >/dev/null

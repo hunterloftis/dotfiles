@@ -9,6 +9,9 @@ set -euxo pipefail
 # - ~/.flat/docker
 # - ~/.flat/docker-compose
 
+# references
+# https://fedoramagazine.org/use-docker-compose-with-podman-to-orchestrate-containers-on-fedora/
+
 cleanup() {
   trap - SIGINT SIGTERM ERR
   # script cleanup here
@@ -27,25 +30,33 @@ trap cleanup SIGINT SIGTERM ERR
 sudo steamos-readonly disable
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
-# install openvpn & podman (& pip & podman-dnsname for podman-compose)
-sudo pacman -S --noconfirm networkmanager-openvpn podman podman-dnsname python-pip
+# install packages
+sudo pacman -S --noconfirm networkmanager-openvpn podman podman-docker docker-compose python-pip
 sudo touch /etc/subuid
 sudo usermod --add-subuids 10000-75535 deck
 sudo touch /etc/subgid
 sudo usermod --add-subgids 10000-75535 deck
 # add docker.io as a registry since redhat is silly
 sudo sh -c "printf \"[registries.search]\\nregistries = ['docker.io']\\n\" > /etc/containers/registries.conf"
-# allow flatpak to access /tmp, required for vscode devcontainers
+# allow flatpak to access /tmp & docker.sock, required for vscode devcontainers
 sudo flatpak override --filesystem=/tmp
-sudo steamos-readonly enable
+# https://github.com/flathub/com.visualstudio.code/issues/55#issuecomment-541975985
+# /run/user instead of /run/docker.sock because podman's DOCKER_HOST is /run/user/$UID/podman/podman.sock
+sudo flatpak override --filesystem=/run/user/1000/podman/podman.sock com.visualstudio.code
+sudo flatpak override --env=DOCKER_HOST=unix:///run/user/1000/podman/podman.sock com.visualstudio.code
 # /DANGER ZONE
+sudo steamos-readonly enable
 
 # required to use the uids set above
 podman system migrate
 
+# set up podman socket to work with docker-compose
+systemctl --user enable --now podman.socket
+systemctl --user status podman.socket
+
 # install podman-compose
 # pip3 install podman-compose
-pip3 install git+https://github.com/containers/podman-compose.git@devel
+# pip3 install git+https://github.com/containers/podman-compose.git@devel
 
 # install vscode, chrome, godot
 flatpak update -y
@@ -61,7 +72,7 @@ flatpak run --branch=stable --arch=x86_64 --command=code --file-forwarding com.v
 # download NordVPN's openvpn configs
 mkdir -p ~/ovpn
 sudo curl https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip --output /tmp/ovpn.zip
-unzip -o /tmp/ovpn.zip -d ~/ovpn
+unzip -q -o /tmp/ovpn.zip -d ~/ovpn
 
 # uncomment to auto-open bitwarden install URL
 # xdg-open https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb?hl=en
@@ -83,9 +94,7 @@ git config --global pull.ff only
 # configure keyboard
 setxkbmap -option 'ctrl:swap_lalt_lctl'
 
-# TODO: include ~/.flat/docker and ~/.flat/docker-compose flatpak wrappers that call the host's podman/podman-compose equivalents. 
 # TODO: load a KDE hotkey config file (with swapped ctrl + alt and other things)
-# TODO: include a ~/test/node-pg project that uses vscode devcontainers to run node and postgres via podman-compose
 # TODO: load a KDE keyboard repeat speed config
 # TODO: load a KDE fx (wobbly windows etc) config
 
