@@ -79,8 +79,9 @@ git config --global user.email hunter@hunterloftis.com
 git config --global core.editor "nano"
 git config --global pull.ff only
 
-# TODO: include a .bashrc that autoloads ssh-agent/ssh keys
-#   https://github.com/White-Oak/arch-setup-for-dummies/blob/master/setting-up-ssh-agent.md
+# configure keyboard
+setxkbmap -option 'ctrl:swap_lalt_lctl'
+
 # TODO: include ~/.flat/docker and ~/.flat/docker-compose flatpak wrappers that call the host's podman/podman-compose equivalents. 
 # TODO: load a KDE hotkey config file (with swapped ctrl + alt and other things)
 # TODO: include a ~/test/node-pg project that uses vscode devcontainers to run node and postgres via podman-compose
