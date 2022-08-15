@@ -44,7 +44,8 @@ sudo steamos-readonly enable
 podman system migrate
 
 # install podman-compose
-pip3 install podman-compose
+# pip3 install podman-compose
+pip3 install git+https://github.com/containers/podman-compose.git@devel
 
 # install vscode, chrome, godot
 flatpak update -y
