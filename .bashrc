@@ -7,7 +7,7 @@
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 ssh-add ~/.ssh/*_rsa
 
-# path for podman
+# path for podman & docker-compose
 export PATH="~/.local/bin:$PATH"
 
 # dotfiles

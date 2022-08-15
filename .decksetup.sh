@@ -30,8 +30,9 @@ trap cleanup SIGINT SIGTERM ERR
 sudo steamos-readonly disable
 sudo pacman-key --init
 sudo pacman-key --populate archlinux
+sudo pacman -Syy
 # install packages
-sudo pacman -S --noconfirm networkmanager-openvpn podman podman-docker docker-compose python-pip
+sudo pacman -S --noconfirm networkmanager-openvpn podman podman-docker python-pip
 sudo touch /etc/subuid
 sudo usermod --add-subuids 10000-75535 deck
 sudo touch /etc/subgid
@@ -57,6 +58,9 @@ systemctl --user status podman.socket
 # install podman-compose
 # pip3 install podman-compose
 # pip3 install git+https://github.com/containers/podman-compose.git@devel
+
+# https://github.com/containers/podman/issues/11822#issuecomment-932289679
+pip3 install docker-compose==1.29.2
 
 # install vscode, chrome, godot
 flatpak update -y
