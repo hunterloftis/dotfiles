@@ -98,5 +98,6 @@ echo '  1. install bitwarden: https://chrome.google.com/webstore/detail/bitwarde
 echo '  2. via bitwarden, copy your SSH keys into ~/.ssh'
 echo '  3. chmod 600 ~/.ssh/* && chmod 700 ~/.ssh'
 echo '  4. open network connection settings and add a new VPN connection using a file in ~/ovpn/udp'
+echo '  5. open settings and load shortcuts from ~/shortcuts.kksrc'
 echo
 
