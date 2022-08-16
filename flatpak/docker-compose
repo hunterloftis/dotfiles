@@ -1,0 +1,2 @@
+#!/bin/sh
+flatpak-spawn --host --env=DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock /home/deck/.local/bin/docker-compose "$@"
