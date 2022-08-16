@@ -30,7 +30,9 @@ Tested via:
 ## Quick start
 
 You probably want to fork these dotfiles & read through them to tune to your preferences.
-Otherwise, after running these commands, your Deck will be identical to mine:
+Otherwise, after running these commands, your Deck will be identical to mine.
+
+These are managed via the popular [HackerNews dotfiles strategy](https://news.ycombinator.com/item?id=11070797):
 
 ```bash
 cd ~
