@@ -35,7 +35,7 @@ sudo pacman-key --init
 sudo pacman-key --populate archlinux
 sudo pacman -Syy
 # install packages
-sudo pacman -S --noconfirm networkmanager-openvpn podman podman-docker python-pip
+sudo pacman -S --noconfirm networkmanager-openvpn podman podman-docker podman-dnsname python-pip
 sudo touch /etc/subuid
 sudo usermod --add-subuids 10000-75535 deck
 sudo touch /etc/subgid
@@ -98,9 +98,6 @@ git config --global user.email hunter@hunterloftis.com
 git config --global core.editor "nano"
 git config --global pull.ff only
 
-# configure keyboard
-setxkbmap -option 'ctrl:swap_lalt_lctl'
-
 # TODO: load a KDE hotkey config file (with swapped ctrl + alt and other things)
 # TODO: load a KDE keyboard repeat speed config
 # TODO: load a KDE fx (wobbly windows etc) config
@@ -108,7 +105,7 @@ setxkbmap -option 'ctrl:swap_lalt_lctl'
 set +x
 echo
 echo
-echo 'Manual TODOs:'
+echo 'Next:'
 echo
 echo '  1. install bitwarden: https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb?hl=en'
 echo '  2. via bitwarden, copy your SSH keys into ~/.ssh'
@@ -116,5 +113,6 @@ echo '  3. chmod 600 ~/.ssh/* && chmod 700 ~/.ssh'
 echo '  4. open network connection settings and add a new VPN connection using a file in ~/ovpn/udp'
 echo '  5. open settings and load shortcuts from ~/shortcuts.kksrc'
 echo '  6. other settings: wobbly windows, keyboard repeat speed'
+echo '  7. RESTART'
 echo
 

@@ -2,5 +2,6 @@
     "security.workspace.trust.untrustedFiles": "open",
     "editor.minimap.enabled": false,
     "remote.containers.dockerComposePath": "/home/deck/flatpak/docker-compose",
-    "remote.containers.dockerPath": "/home/deck/flatpak/docker"
+    "remote.containers.dockerPath": "/home/deck/flatpak/docker",
+    "window.restoreWindows": "none"
 }

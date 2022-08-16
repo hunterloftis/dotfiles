@@ -32,15 +32,26 @@ Tested via:
 You probably want to fork these dotfiles & read through them to tune to your preferences.
 Otherwise, after running these commands, your Deck will be identical to mine.
 
-These are managed via the popular [HackerNews dotfiles strategy](https://news.ycombinator.com/item?id=11070797):
+1. Connect to wifi
+2. Go to Power -> Desktop mode
+3. Open a Konsole terminal
+4. Set up dotfiles managed via the [HackerNews dotfiles strategy](https://news.ycombinator.com/item?id=11070797):
 
 ```bash
 cd ~
+git config --global init.defaultBranch main
 git init --bare ~/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
-dotfiles remote add origin git@github.com:hunterloftis/dotfiles.git
-dotfiles pull origin main
+dotfiles remote add origin https://github.com/hunterloftis/dotfiles.git
+dotfiles fetch --all
+dotfiles reset --hard origin/main
 passwd # choose a password for sudoing on your deck
-./.decksetup.sh
+~/.decksetup.sh
 ```
+
+If you've already been using podman,
+you should `podman network ls` and `podman network rm` any
+existing networks, to ensure that they'll be recreated with the podman-dnsname plugin.
+
+Finally, restart your deck.
