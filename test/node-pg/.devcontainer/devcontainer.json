@@ -1,14 +1,11 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/javascript-node
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/javascript-node-postgres
+// Update the VARIANT arg in docker-compose.yml to pick a Node.js version
 {
-	"name": "Node.js",
-	"build": {
-		"dockerfile": "Dockerfile",
-		// Update 'VARIANT' to pick a Node version: 18, 16, 14.
-		// Append -bullseye or -buster to pin to an OS version.
-		// Use -bullseye variants on local arm64/Apple Silicon.
-		"args": { "VARIANT": "16-bullseye" }
-	},
+	"name": "Node.js & PostgreSQL",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspace",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -19,10 +16,11 @@
 				"dbaeumer.vscode-eslint"
 			]
 		}
-	},
+	}
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	// This can be used to network with other containers or with the host.
+	// "forwardPorts": [3000, 5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "yarn install",
