@@ -41,5 +41,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 dotfiles config status.showUntrackedFiles no
 dotfiles remote add origin git@github.com:hunterloftis/dotfiles.git
 dotfiles pull origin main
+passwd # choose a password for sudoing on your deck
 ./.decksetup.sh
 ```

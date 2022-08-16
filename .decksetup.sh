@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euxo pipefail
+set -euo pipefail
 
 # Idempotent deck setup script
 # Expects to live with other dotfiles:
@@ -19,8 +19,11 @@ cleanup() {
 }
 
 # make sure a password has been set
-set +x
-echo "run 'passwd' to set a password, if you haven't already"
+read -p "Have you already run 'passwd' to set a password for your deck (y/n)? " choice
+case "$choice" in
+  y|Y ) echo "yes";;
+  * ) echo "Do that first" && exit 0;;
+esac
 set -x
 sudo whoami
 
