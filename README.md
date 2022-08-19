@@ -8,6 +8,8 @@ Dotfiles to unlock general development capabilities on a Steam Deck.
 - Enables OpenVPN and pulls down NordVPN's ovpn configs
 - Works alongside Steam Deck updates and even re-imaging the Deck
 
+![vscode screenshot](https://user-images.githubusercontent.com/364501/184961092-15530648-1ade-4923-bda9-ab3a5cc4a437.png)
+
 ## How it works
 
 - Applies all changes via an idempotent `~/.decksetup.sh` script
