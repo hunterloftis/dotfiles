@@ -3,5 +3,6 @@
     "editor.minimap.enabled": false,
     "remote.containers.dockerComposePath": "/home/deck/flatpak/docker-compose",
     "remote.containers.dockerPath": "/home/deck/flatpak/docker",
-    "window.restoreWindows": "none"
+    "window.restoreWindows": "none",
+    "editor.fontSize": 14
 }
