@@ -57,3 +57,11 @@ you should `podman network ls` and `podman network rm` any
 existing networks, to ensure that they'll be recreated with the podman-dnsname plugin.
 
 Finally, restart your deck.
+
+## Troubleshooting
+
+Podman isn't the most resilient software, but at least it's easy to reset:
+
+```
+podman system reset
+```
