@@ -69,17 +69,17 @@ pip3 install docker-compose==1.29.2
 flatpak update -y
 flatpak install -y org.chromium.Chromium
 flatpak install -y com.visualstudio.code
-flatpak install -y org.godotengine.Godot
-xdg-settings set default-web-browser org.chromium.Chromium.desktop
+# flatpak install -y org.godotengine.Godot
+# xdg-settings set default-web-browser org.chromium.Chromium.desktop
 
 # install vscode extensions
 export $(dbus-launch)
 flatpak run --branch=stable --arch=x86_64 --command=code --file-forwarding com.visualstudio.code --reuse-window --install-extension ms-vscode-remote.remote-containers
 
 # download NordVPN's openvpn configs
-mkdir -p ~/ovpn
-sudo curl https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip --output /tmp/ovpn.zip
-unzip -q -o /tmp/ovpn.zip -d ~/ovpn
+# mkdir -p ~/ovpn
+# sudo curl https://downloads.nordcdn.com/configs/archives/servers/ovpn.zip --output /tmp/ovpn.zip
+# unzip -q -o /tmp/ovpn.zip -d ~/ovpn
 
 # uncomment to auto-open bitwarden install URL
 # xdg-open https://chrome.google.com/webstore/detail/bitwarden-free-password-m/nngceckbapebfimnlniiiahkandclblb?hl=en
@@ -93,8 +93,8 @@ mkdir -p ~/code ~/test
 systemctl --user enable --now ssh-agent
 
 # configure git
-git config --global user.name "Hunter Loftis"
-git config --global user.email hunter@hunterloftis.com
+git config --global user.name "robotjohn"
+git config --global user.email john@robotjohn.com
 git config --global core.editor "nano"
 git config --global pull.ff only
 
